@@ -1,16 +1,22 @@
-const dotenv = require("dotenv")
-dotenv.config()
+const dotenv=require("dotenv");
+dotenv.config();
+const mysql=require("mysql");
 
 
+var pool  = mysql.createPool({
+  connectionLimit : 30,
+  host            : 'localhost',
+  user            : 'root',
+  password        : '',
+  database        : "cwv2"
+});
 
-var MongoClient = require('mongodb').MongoClient;
-var url = process.env.CONNECTIONSTRING;
+pool.getConnection(function(err, connection) {
+  if (err) throw err; // not connected!
+  const app=require("./app")
+  app.listen(process.env.PORT,(req,res)=>{console.log('Connection success')})
+  connection.release();
+});
 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("ReactCourse");
-  module.exports = dbo
-const app = require("./app")
- app.listen(process.env.PORT)
 
-  });
+module.exports=pool

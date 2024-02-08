@@ -10,6 +10,19 @@ exports.start=function(req,res){
 }
 }
 
+exports.deleteSelected=function(req,res){
+	if(req.body.selectedR){
+			let game=new Repo(req.body)
+			game.deleteS()
+			.then((result)=>{
+				res.json(result)
+			})
+			.catch()
+}
+}
+
+
+
 exports.displayReport=function(req,res){
 	if(req.body.token){
 			let game=new Repo(req.body)
@@ -22,14 +35,22 @@ exports.displayReport=function(req,res){
 }
 
 
-
 exports.delete=function(req,res){
-if(req.body.token){
-		let game=new Repo(req.body)
-		game.delete().then((result)=>{
-res.json(result)
-		}).catch((e)=>{console.log(e)})
-}else{
-	res.render("404")
+	if(req.body.selectedR){
+			let game=new Repo(req.body)
+			game.delete()
+			.then((result)=>{
+				res.json(result)
+			})
+			.catch()
 }
+}
+
+exports.deleteAll=function(req,res){
+			let game=new Repo(req.body)
+			game.deleteAll()
+			.then((result)=>{
+				res.json(result)
+			})
+			.catch()
 }

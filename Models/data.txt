@@ -1,0 +1,9 @@
+/*Explore:
+1-check if there is enough gold
+2-if there is enough gold i check world table city x and y
+3-if no exist y and x send error message
+4-if there is city check if owner of that city exist at player table
+5-if there is owner get data and insert it at reveal table and deduct price from player gold
+6-in case no owner at player i will check if there is any at AI table
+7-in case i found record i insert it at reveal and deduct price from player gold
+8-in case not found record , choose random faction from faction table then create owner at Ai table then assign owner to city at world table and insert record at reveal table and deduct price from player gold*/

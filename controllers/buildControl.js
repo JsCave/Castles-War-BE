@@ -6,6 +6,7 @@ exports.start=function(req,res){
 			.then((result)=>{
 				res.json(result)
 			})
-			.catch((e)=>{res.json(e)})
+			.catch((e)=>{
+				res.json(e)})
 }
 }
